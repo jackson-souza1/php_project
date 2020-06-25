@@ -1,0 +1,23 @@
+web:
+    image: nginx:latest
+    container_name: nginx
+    restart: always
+    ports:
+        - "80:80"
+
+    volumes: 
+        - ./www:/www
+        - ./site.conf:/etc/nginx/conf.d/site.conf # :)
+
+    links: 
+        - php
+php:
+    image: php:7.3-fpm
+    container_name: php-fpm #aqui
+    volumes:
+        - ./www:/www
+            
+
+
+
+
